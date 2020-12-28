@@ -6,4 +6,4 @@ COPY . .
 RUN pip install --upgrade pip setuptools wheel \
     && pip install -r requirements.txt \
     && rm -rf /root/.cache/pip
-CMD uvicorn source.main:app --reload --host 0.0.0.0 --port 8000
+CMD uvicorn main:app --reload --host 0.0.0.0 --port 8000
