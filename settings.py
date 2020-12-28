@@ -1,4 +1,11 @@
-SECRET_KEY = 'g6amf6v+njpr(kt94z89t)3+=p-_9zilu&dcygw_5$hm9ot#^5'
+import os
+
+from dotenv import load_dotenv
+
+load_dotenv(verbose=True)
+
+
+SECRET_KEY = os.environ.get('SEKRET_KEY')
 
 DEBUG = True
 AUTH_PREFIX = 'Bearer'
