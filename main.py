@@ -66,3 +66,14 @@ async def process_time_middleware(request, call_next):
     process_time = time.time() - start_time
     response.headers["X-Process-Time"] = str(process_time)
     return response
+
+
+# Create your routes here.
+
+app.include_router(router=chat, tags=["chats"])
+app.include_router(router=news, tags=["news"])
+app.include_router(router=stonks, tags=["stonks"])
+
+
+if __name__ == '__main__':
+    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=False)
