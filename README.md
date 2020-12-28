@@ -9,4 +9,4 @@ Would you like to contribute to the project?
 
 [The reference to Trello board for developers](https://trello.com/b/3xOfbAkj/marmonbot)  
 
-#"Big things have small beginnings."
+# "Big things have small beginnings."
