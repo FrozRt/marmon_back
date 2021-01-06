@@ -14,7 +14,7 @@ Post: Any = Table(
     Column('topic_id', Integer, ForeignKey('user.id', ondelete='SET NULL'), nullable=True),
 
     Column('title', String(64), nullable=False),
-    Column('text', Text, nullable=False, server_default='text'),
+    Column('text', Text, nullable=False),
     Column('html', Text, nullable=True),
     Column('image_id', Integer, ForeignKey('image.id', ondelete='SET NULL'), nullable=True),
 
@@ -24,5 +24,17 @@ Post: Any = Table(
 
     Column('is_visible', Boolean, default=True),
     Column('is_commentable', Boolean, default=True),
-    Column('is_public', Boolean, default=True),  # special or the poor man's post
+    Column('is_public', Boolean, default=True),  # special or poor man's post
+)
+
+
+Topic: Any = Table(
+    'topic', metadata,
+    Column('slug', String(64), primary_key=True, unique=True),
+
+    Column('name', String(64), nullable=False),
+    Column('icon_id', Integer, ForeignKey('image.id', ondelete='SET NULL'), unique=True, nullable=True),
+    Column('description', Text, nullable=True),
+
+    Column('is_visible', Boolean, default=True),
 )
