@@ -1,5 +1,3 @@
-"""Start your application from here."""
-import os
 import time
 
 import uvicorn
@@ -7,17 +5,18 @@ from fastapi import FastAPI
 from starlette.requests import Request
 from starlette.responses import JSONResponse, Response
 
-from settings import DEBUG
+import settings
 from database import database
 from apps.chat.controllers import chat
 from apps.news.controllers import news
 from apps.stonks.controllers import stonks
 
 
-app = FastAPI(debug=DEBUG,
-              title='Marmon',
-              version='0.1.1',
-              docs_url='/docs')
+app = FastAPI(debug=settings.DEBUG,
+              title=settings.APP_TITLE,
+              version=settings.VERSION,
+              description=settings.APP_DESCRIPTION,
+              docs_url=settings.DOCS_URL)
 
 
 @app.on_event("startup")
@@ -35,7 +34,7 @@ async def shutdown():
 @app.middleware("http")
 async def exception_middleware(request, call_next):
     """Exception middleware, for handling exception."""
-    if not DEBUG:
+    if not settings.DEBUG:
         try:
             response = await call_next(request)
         except Exception as error:
@@ -76,4 +75,4 @@ app.include_router(router=stonks, tags=["stonks"])
 
 
 if __name__ == '__main__':
-    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=False)
+    uvicorn.run("main:app", host=settings.HOST, port=settings.PORT, reload=False)

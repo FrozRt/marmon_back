@@ -1,15 +1,10 @@
-import os
 import typing
 
 from databases import Database
-from dotenv import load_dotenv
 from sqlalchemy import create_engine, MetaData
 from sqlalchemy.sql import ClauseElement
 
-load_dotenv(verbose=True)
-
-DATABASE_URL = os.environ.get('DATABASE_URL')
-DEFAULT_SCHEMA = 'public'
+from settings import DATABASE_URL, DEFAULT_SCHEMA
 
 
 class DatabaseNorm(Database):
