@@ -1,0 +1,27 @@
+version: "3"
+
+services:
+  api:
+    container_name: marmon-api
+    image:
+    restart: always
+    ports:
+      - 6002:8000
+    depends_on:
+      - db
+
+  marmon_front:
+    container_name: marmon-front
+    image:
+    restart: always
+    ports:
+      - 6080:8080
+
+  db:
+    container_name: marmon-db
+    image: postgres:latest
+    restart: always
+    ports:
+      - 6001:5432
+    volumes:
+      - ./postgresql_data:/var/lib/postgresql/data

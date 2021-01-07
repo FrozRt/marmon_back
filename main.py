@@ -9,6 +9,8 @@ import settings
 from database import database
 from apps.chat.controllers import chat
 from apps.news.controllers import news
+from apps.profiles.controllers import profiles
+from apps.comments.controllers import comments
 from apps.stonks.controllers import stonks
 
 
@@ -68,10 +70,11 @@ async def process_time_middleware(request, call_next):
 
 
 # Create your routes here.
-
 app.include_router(router=chat, tags=["chats"])
 app.include_router(router=news, tags=["news"])
 app.include_router(router=stonks, tags=["stonks"])
+app.include_router(router=comments, tags=["comments"])
+app.include_router(router=profiles, tags=["profiles"])
 
 
 if __name__ == '__main__':
