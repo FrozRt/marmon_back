@@ -3,7 +3,7 @@ version: "3"
 services:
   api:
     container_name: marmon-api
-    image:
+    image: docker.marmon.info/master/marmon_back:latest
     restart: always
     ports:
       - 6002:8000
@@ -12,7 +12,7 @@ services:
 
   marmon_front:
     container_name: marmon-front
-    image:
+    image: docker.marmon.info/master/marmon_front:latest
     restart: always
     ports:
       - 6080:8080
