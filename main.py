@@ -9,7 +9,7 @@ import settings
 from database import database
 from apps.chat.controllers import chat
 from apps.news.controllers import news
-from apps.profiles.controllers import profiles
+from apps.users.controllers import profiles
 from apps.comments.controllers import comments
 from apps.stonks.controllers import stonks
 
@@ -74,7 +74,7 @@ app.include_router(router=chat, tags=["chats"])
 app.include_router(router=news, tags=["news"])
 app.include_router(router=stonks, tags=["stonks"])
 app.include_router(router=comments, tags=["comments"])
-app.include_router(router=profiles, tags=["profiles"])
+app.include_router(router=profiles, tags=["users"])
 
 
 if __name__ == '__main__':
