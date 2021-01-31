@@ -18,4 +18,3 @@ class NewsSchemaIn(BaseModel):
 
 class NewsSchemaOut(NewsSchemaIn):
     id: Union[str, int]
-
